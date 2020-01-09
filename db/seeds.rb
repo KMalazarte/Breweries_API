@@ -12,7 +12,6 @@ require 'byebug'
 def create()
   api = RestClient.get("https://api.openbrewerydb.org/breweries?by_city=Atlanta")
   breweries_obj = JSON.parse(api)
-  # byebug
   breweries_obj.map{ |brewery| Brewery.create(name: brewery["name"], brewery_type: brewery["brewery_type"], street: brewery["street"], city: brewery["city"], state: brewery["state"], postal_code: brewery["postal_code"], longitude: brewery["longitude"], latitude: brewery["latitude"], phone: brewery["phone"], website_url: brewery["website_url"])}
 end
 
